@@ -7,6 +7,10 @@
 FROM node:lts-alpine3.10
 WORKDIR /app
 
+# give the user full access to the app folder
+RUN set -x \
+	&& chmod -R 777 /app/
+
 # "bcrypt" requires python/make/g++, all must be installed in alpine
 # (note: using pinned versions to ensure immutable build environment)
 RUN apk update && \
